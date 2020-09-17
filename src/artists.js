@@ -1,18 +1,13 @@
 import * as React from "react";
-import { useMediaQuery } from "@material-ui/core";
 import {
   Filter,
   List,
   Datagrid,
   TextField,
-  ReferenceField,
   EditButton,
   Edit,
   SimpleForm,
-  SimpleList,
   TextInput,
-  ReferenceInput,
-  SelectInput,
   Create,
 } from "react-admin";
 
@@ -23,28 +18,16 @@ const ArtistFilter = (props) => (
 );
 
 export const ArtistList = (props) => {
-  const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <List {...props} filters={<ArtistFilter />}>
-      {/* {isSmall ? (
-        <SimpleList
-          primaryText={(record) => record.title}
-          secondaryText={(record) => `${record.views} views`}
-          tertiaryText={(record) =>
-            new Date(record.published_at).toLocaleDateString()
-          }
-        />
-      ) : ( */}
       <Datagrid>
         <TextField source="id" />
-        <ReferenceField label="User" source="userId" reference="users">
-          <TextField source="name" />
-        </ReferenceField>
-        <TextField source="title" />
-        <TextField source="body" />
+        <TextField source="artist_id" label="ArtistID" />
+        <TextField source="name" />
+        <TextField source="url" />
+        <TextField source="twitter_id" label="TwitterID" />
         <EditButton />
       </Datagrid>
-      {/* )} */}
     </List>
   );
 };
@@ -53,27 +36,26 @@ const ArtistTitle = ({ record }) => {
   return <span>Artist {record ? `"${record.title}"` : ""}</span>;
 };
 
-// export const ArtistEdit = (props) => (
-//   <Edit title={<ArtistTitle />} {...props}>
-//     <SimpleForm>
-//       <TextInput disabled source="id" />
-//       <ReferenceInput source="userId" reference="users">
-//         <SelectInput optionText="name" />
-//       </ReferenceInput>
-//       <TextInput source="title" />
-//       <TextInput multiline source="body" />
-//     </SimpleForm>
-//   </Edit>
-// );
+export const ArtistEdit = (props) => (
+  <Edit title={<ArtistTitle />} {...props}>
+    <SimpleForm>
+      <TextInput disabled source="id" />
+      <TextInput source="artist_id" label="ArtistID" />
+      <TextInput source="name" />
+      <TextInput source="url" />
+      <TextInput source="twitter_id" label="TwitterID" />
+    </SimpleForm>
+  </Edit>
+);
 
-// export const ArtistCreate = (props) => (
-//   <Create {...props}>
-//     <SimpleForm>
-//       <ReferenceInput source="userId" reference="users">
-//         <SelectInput optionText="name" />
-//       </ReferenceInput>
-//       <TextInput source="title" />
-//       <TextInput multiline source="body" />
-//     </SimpleForm>
-//   </Create>
-// );
+export const ArtistCreate = (props) => (
+  <Create {...props}>
+    <SimpleForm>
+      {/* <TextInput disabled source="id" /> */}
+      <TextInput source="artist_id" label="ArtistID" />
+      <TextInput source="name" />
+      <TextInput source="url" />
+      <TextInput source="twitter_id" label="TwitterID" />
+    </SimpleForm>
+  </Create>
+);
