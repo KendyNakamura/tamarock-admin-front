@@ -17,10 +17,9 @@ const httpClient = (url, options = {}) => {
   options.headers.set("Authorization", `Bearer ${token}`);
   return fetchUtils.fetchJson(url, options);
 };
-const dataProvider = jsonServerProvider(
-  "http://localhost:5010/api/admin",
-  httpClient
-);
+
+const dataProvider = jsonServerProvider("/api/admin", httpClient);
+
 const App = () => (
   <Admin
     dashboard={Dashboard}
@@ -28,6 +27,7 @@ const App = () => (
     logoutButton={MyLogoutButton}
     authProvider={authProvider}
     dataProvider={dataProvider}
+    // history={history}
   >
     <Resource
       name="artists"

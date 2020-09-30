@@ -1,7 +1,7 @@
 export default {
   // called when the user attempts to log in
   login: ({ email, password }) => {
-    const request = new Request("http://localhost:5010/api/admin/login", {
+    const request = new Request("/api/admin/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: new Headers({ "Content-Type": "application/json" }),
