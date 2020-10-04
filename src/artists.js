@@ -41,9 +41,9 @@ export const ArtistEdit = (props) => (
     <SimpleForm>
       <TextInput disabled source="id" />
       <TextInput source="artist_id" label="ArtistID" />
-      <TextInput source="name" />
-      <TextInput source="url" />
-      <TextInput source="twitter_id" label="TwitterID" />
+      <TextInput source="name" fullWidth />
+      <TextInput source="url" fullWidth />
+      <TextInput source="twitter_id" label="TwitterID" fullWidth />
     </SimpleForm>
   </Edit>
 );
@@ -51,11 +51,10 @@ export const ArtistEdit = (props) => (
 export const ArtistCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
-      {/* <TextInput disabled source="id" /> */}
       <TextInput source="artist_id" label="ArtistID" />
-      <TextInput source="name" />
-      <TextInput source="url" />
-      <TextInput source="twitter_id" label="TwitterID" />
+      <TextInput source="name" fullWidth />
+      <TextInput source="url" fullWidth />
+      <TextInput source="twitter_id" label="TwitterID" fullWidth />
     </SimpleForm>
   </Create>
 );

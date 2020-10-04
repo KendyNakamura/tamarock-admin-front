@@ -41,8 +41,8 @@ const ArticleTitle = ({ record }) => {
 export const ArticleEdit = (props) => (
   <Edit title={<ArticleTitle />} {...props}>
     <SimpleForm>
-      <TextInput disabled source="id" />
-      <TextInput source="title" />
+      {/* <TextInput disabled source="id" /> */}
+      <TextInput source="title" fullWidth />
       <RichTextInput source="text" />
       <NumberInput source="category" />
     </SimpleForm>
@@ -52,9 +52,9 @@ export const ArticleEdit = (props) => (
 export const ArticleCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <TextInput source="title" />
+      <TextInput source="title" fullWidth />
       <RichTextInput source="text" />
-      <NumberInput source="category" />
+      <NumberInput source="category" initialValue="1" />
     </SimpleForm>
   </Create>
 );
