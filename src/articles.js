@@ -54,7 +54,7 @@ export const ArticleCreate = (props) => (
     <SimpleForm>
       <TextInput source="title" fullWidth />
       <RichTextInput source="text" />
-      <NumberInput source="category" initialValue="1" />
+      <NumberInput source="category" initialValue={1} />
     </SimpleForm>
   </Create>
 );

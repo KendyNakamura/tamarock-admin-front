@@ -9,6 +9,7 @@
     "cross-env": "^7.0.2",
     "http-proxy-middleware": "^1.0.5",
     "mini-create-react-context": "^0.4.0",
+    "netlify-cli": "^2.65.0",
     "prop-types": "^15.7.2",
     "ra-data-json-server": "^3.8.2",
     "ra-data-simple-rest": "^3.8.3",
@@ -20,7 +21,7 @@
   },
   "scripts": {
     "start": "PORT=3100 react-scripts start",
-    "build": "cross-env PUBLIC_URL=/admin/ react-scripts build",
+    "build": "cross-env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
