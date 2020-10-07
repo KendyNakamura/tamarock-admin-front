@@ -1,7 +1,7 @@
 export default {
   // called when the user attempts to log in
   login: ({ email, password }) => {
-    if (process.env.REACT_APP_API_ENDPOINT === "production") {
+    if (process.env.REACT_APP_ENV === "production") {
       var endpoint = `${process.env.REACT_APP_API_ENDPOINT}/api/admin/login`;
     } else {
       endpoint = "/api/admin/login";
