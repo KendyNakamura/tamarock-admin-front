@@ -9,7 +9,10 @@ export default {
     const request = new Request(endpoint, {
       method: "POST",
       body: JSON.stringify({ email, password }),
-      headers: new Headers({ "Content-Type": "application/json" }),
+      headers: new Headers({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      }),
     });
     return fetch(request)
       .then((response) => {
