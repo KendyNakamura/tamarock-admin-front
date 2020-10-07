@@ -1,7 +1,12 @@
 export default {
   // called when the user attempts to log in
   login: ({ email, password }) => {
-    const request = new Request("/api/admin/login", {
+    if (process.env.REACT_APP_API_ENDPOINT === "production") {
+      var endpoint = `${process.env.REACT_APP_API_ENDPOINT}/api/admin/login`;
+    } else {
+      endpoint = "/api/admin/login";
+    }
+    const request = new Request(endpoint, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: new Headers({ "Content-Type": "application/json" }),
