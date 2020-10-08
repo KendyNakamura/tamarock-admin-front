@@ -18,11 +18,7 @@ const httpClient = (url, options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
-if (process.env.REACT_APP_ENV === "production") {
-  var endpoint = `${process.env.REACT_APP_API_ENDPOINT}/api/admin`;
-} else {
-  endpoint = "/api/admin";
-}
+var endpoint = `${process.env.REACT_APP_API_ENDPOINT}/api/admin`;
 const dataProvider = jsonServerProvider(endpoint, httpClient);
 
 const App = () => (
