@@ -8,9 +8,6 @@ import UserIcon from "@material-ui/icons/Group";
 import authProvider from "./authProvider";
 import MyLoginPage from "./MyLoginPage";
 import MyLogoutButton from "./MyLogoutButton";
-import { createBrowserHistory as createHistory } from "history";
-
-const history = createHistory({ basename: "admin" });
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -35,7 +32,6 @@ const App = () => (
     logoutButton={MyLogoutButton}
     authProvider={authProvider}
     dataProvider={dataProvider}
-    history={history}
   >
     <Resource
       name="artists"
