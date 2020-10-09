@@ -10,6 +10,13 @@ import {
   TextInput,
   Create,
 } from "react-admin";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  richText: {
+    maxWidth: "900px",
+  },
+});
 
 const ArtistFilter = (props) => (
   <Filter {...props}>
@@ -36,25 +43,27 @@ const ArtistTitle = ({ record }) => {
   return <span>Artist {record ? `"${record.title}"` : ""}</span>;
 };
 
-export const ArtistEdit = (props) => (
-  <Edit title={<ArtistTitle />} {...props}>
-    <SimpleForm>
+const ArtistForm = (props) => {
+  const classes = useStyles();
+  return (
+    <SimpleForm className={classes.richText} {...props}>
       <TextInput disabled source="id" />
       <TextInput source="artist_id" label="ArtistID" />
       <TextInput source="name" fullWidth />
       <TextInput source="url" fullWidth />
       <TextInput source="twitter_id" label="TwitterID" fullWidth />
     </SimpleForm>
+  );
+};
+
+export const ArtistEdit = (props) => (
+  <Edit title={<ArtistTitle />} {...props}>
+    <ArtistForm />
   </Edit>
 );
 
 export const ArtistCreate = (props) => (
   <Create {...props}>
-    <SimpleForm>
-      <TextInput source="artist_id" label="ArtistID" />
-      <TextInput source="name" fullWidth />
-      <TextInput source="url" fullWidth />
-      <TextInput source="twitter_id" label="TwitterID" fullWidth />
-    </SimpleForm>
+    <ArtistForm />
   </Create>
 );

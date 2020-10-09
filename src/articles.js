@@ -10,9 +10,18 @@ import {
   SimpleForm,
   TextInput,
   NumberInput,
+  ImageInput,
+  ImageField,
   Create,
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  richText: {
+    maxWidth: "900px",
+  },
+});
 
 const ArticleFilter = (props) => (
   <Filter {...props}>
@@ -37,23 +46,34 @@ const ArticleTitle = ({ record }) => {
   return <span>Article {record ? `"${record.title}"` : ""}</span>;
 };
 
-export const ArticleEdit = (props) => (
-  <Edit title={<ArticleTitle />} {...props}>
-    <SimpleForm>
-      {/* <TextInput disabled source="id" /> */}
+const ArticleForm = (props) => {
+  const classes = useStyles();
+  return (
+    <SimpleForm className={classes.richText} {...props}>
+      <TextInput disabled source="id" />
       <TextInput source="title" fullWidth />
+      <ImageInput source="pictures" label="Related pictures" accept="image/*">
+        <ImageField source="src" title="title" />
+      </ImageInput>
       <RichTextInput source="text" />
       <NumberInput source="category" />
     </SimpleForm>
-  </Edit>
-);
+  );
+};
 
-export const ArticleCreate = (props) => (
-  <Create {...props}>
-    <SimpleForm>
-      <TextInput source="title" fullWidth />
-      <RichTextInput source="text" />
-      <NumberInput source="category" initialValue={1} />
-    </SimpleForm>
-  </Create>
-);
+export const ArticleEdit = (props) => {
+  return (
+    <Edit title={<ArticleTitle />} {...props}>
+      <ArticleForm />
+    </Edit>
+  );
+};
+
+export const ArticleCreate = (props) => {
+  const classes = useStyles();
+  return (
+    <Create {...props}>
+      <ArticleForm />
+    </Create>
+  );
+};
