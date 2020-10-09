@@ -26,7 +26,6 @@ export const ArticleList = (props) => {
       <Datagrid>
         <TextField source="id" />
         <TextField source="title" />
-        <TextField source="text" />
         <NumberField source="category" />
         <EditButton />
       </Datagrid>
