@@ -71,7 +71,6 @@ export const ArticleEdit = (props) => {
 };
 
 export const ArticleCreate = (props) => {
-  const classes = useStyles();
   return (
     <Create {...props}>
       <ArticleForm />
