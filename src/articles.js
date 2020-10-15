@@ -55,7 +55,8 @@ const ArticleForm = (props) => {
       <ImageInput source="pictures" label="Related pictures" accept="image/*">
         <ImageField source="src" title="title" />
       </ImageInput>
-      <RichTextInput source="text" />
+      <TextInput multiline source="text" fullWidth />
+      <RichTextInput source="text" disable />
       <NumberInput source="category" />
     </SimpleForm>
   );
