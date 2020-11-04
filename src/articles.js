@@ -13,6 +13,8 @@ import {
   ImageInput,
   ImageField,
   Create,
+  SelectArrayInput,
+  ReferenceArrayInput,
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
@@ -57,6 +59,14 @@ const ArticleForm = (props) => {
       </ImageInput>
       <TextInput multiline source="text" fullWidth />
       <RichTextInput source="text" disable />
+      <ReferenceArrayInput
+        source="artist_ids"
+        reference="artists"
+        allowEmpty
+        fullWidth
+      >
+        <SelectArrayInput optionText="name" />
+      </ReferenceArrayInput>
       <NumberInput source="category" />
     </SimpleForm>
   );
