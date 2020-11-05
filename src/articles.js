@@ -13,8 +13,8 @@ import {
   ImageInput,
   ImageField,
   Create,
-  SelectArrayInput,
   ReferenceArrayInput,
+  AutocompleteArrayInput,
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
@@ -60,12 +60,13 @@ const ArticleForm = (props) => {
       <TextInput multiline source="text" fullWidth />
       <RichTextInput source="text" disable />
       <ReferenceArrayInput
+        label="関連アーティスト"
         source="artist_ids"
         reference="artists"
-        allowEmpty
+        sort={{ field: "name", order: "ASC" }}
         fullWidth
       >
-        <SelectArrayInput optionText="name" />
+        <AutocompleteArrayInput />
       </ReferenceArrayInput>
       <NumberInput source="category" />
     </SimpleForm>
