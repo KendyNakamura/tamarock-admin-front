@@ -26,7 +26,11 @@ const ArtistFilter = (props) => (
 
 export const ArtistList = (props) => {
   return (
-    <List {...props} filters={<ArtistFilter />}>
+    <List
+      {...props}
+      filters={<ArtistFilter />}
+      sort={{ field: "name", order: "ASC" }}
+    >
       <Datagrid>
         <TextField source="id" />
         <TextField source="artist_id" label="ArtistID" />

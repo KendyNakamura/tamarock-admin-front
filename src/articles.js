@@ -14,9 +14,10 @@ import {
   ImageField,
   Create,
   ReferenceArrayInput,
+  ReferenceInput,
   AutocompleteArrayInput,
+  SelectInput,
   required,
-  number,
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
@@ -33,11 +34,15 @@ const ArticleFilter = (props) => (
   </Filter>
 );
 
-const validateCategory = [number(), required()];
+const validateRequired = [required()];
 
 export const ArticleList = (props) => {
   return (
-    <List {...props} filters={<ArticleFilter />}>
+    <List
+      {...props}
+      filters={<ArticleFilter />}
+      sort={{ field: "id", order: "DESC" }}
+    >
       <Datagrid>
         <TextField source="id" />
         <TextField source="title" />
@@ -57,12 +62,12 @@ const ArticleForm = (props) => {
   return (
     <SimpleForm className={classes.richText} {...props}>
       <TextInput disabled source="id" />
-      <TextInput source="title" fullWidth />
+      <TextInput source="title" validate={validateRequired} fullWidth />
       <ImageInput source="pictures" label="Related pictures" accept="image/*">
         <ImageField source="src" title="title" />
       </ImageInput>
       <TextInput multiline source="text" fullWidth />
-      <RichTextInput source="text" disable />
+      <RichTextInput source="text" validate={validateRequired} disable />
       <ReferenceArrayInput
         label="関連アーティスト"
         source="artist_ids"
@@ -72,7 +77,16 @@ const ArticleForm = (props) => {
       >
         <AutocompleteArrayInput />
       </ReferenceArrayInput>
-      <NumberInput source="category" validate={validateCategory} />
+      <ReferenceInput
+        label="カテゴリ"
+        source="category"
+        reference="categories"
+        sort={{ field: "name", order: "ASC" }}
+        validate={validateRequired}
+        fullWidth
+      >
+        <SelectInput optionText="name" />
+      </ReferenceInput>
     </SimpleForm>
   );
 };
