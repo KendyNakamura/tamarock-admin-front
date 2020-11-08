@@ -10,7 +10,6 @@ import {
   TextInput,
   Create,
   required,
-  number,
 } from "react-admin";
 import { makeStyles } from "@material-ui/core/styles";
 
