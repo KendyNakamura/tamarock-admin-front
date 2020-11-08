@@ -4,21 +4,14 @@ import {
   List,
   Datagrid,
   TextField,
-  NumberField,
   EditButton,
   Edit,
   SimpleForm,
   TextInput,
-  NumberInput,
-  ImageInput,
-  ImageField,
   Create,
-  ReferenceArrayInput,
-  AutocompleteArrayInput,
   required,
   number,
 } from "react-admin";
-import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -33,14 +26,14 @@ const CategoryFilter = (props) => (
   </Filter>
 );
 
-const validateCategory = [number(), required()];
+const validateCategory = [required()];
 
 export const CategoryList = (props) => {
   return (
     <List {...props} filters={<CategoryFilter />}>
       <Datagrid>
         <TextField source="id" />
-        <TextField source="name" />
+        <TextField source="name" validate={validateCategory} />
         <EditButton />
       </Datagrid>
     </List>
