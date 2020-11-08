@@ -9,7 +9,6 @@ import {
   Edit,
   SimpleForm,
   TextInput,
-  NumberInput,
   ImageInput,
   ImageField,
   Create,
