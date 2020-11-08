@@ -15,6 +15,8 @@ import {
   Create,
   ReferenceArrayInput,
   AutocompleteArrayInput,
+  required,
+  number,
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
@@ -30,6 +32,8 @@ const ArticleFilter = (props) => (
     <TextInput label="Search" source="q" alwaysOn />
   </Filter>
 );
+
+const validateCategory = [number(), required()];
 
 export const ArticleList = (props) => {
   return (
@@ -68,7 +72,7 @@ const ArticleForm = (props) => {
       >
         <AutocompleteArrayInput />
       </ReferenceArrayInput>
-      <NumberInput source="category" />
+      <NumberInput source="category" validate={validateCategory} />
     </SimpleForm>
   );
 };

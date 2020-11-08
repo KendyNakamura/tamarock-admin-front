@@ -3,6 +3,7 @@ import { fetchUtils, Admin, Resource } from "react-admin";
 import Dashboard from "./Dashboard";
 import { ArtistList, ArtistEdit, ArtistCreate } from "./artists";
 import { ArticleList, ArticleEdit, ArticleCreate } from "./articles";
+import { CategoryList, CategoryEdit, CategoryCreate } from "./categories";
 import jsonServerProvider from "ra-data-json-server";
 import UserIcon from "@material-ui/icons/Group";
 import authProvider from "./authProvider";
@@ -41,6 +42,12 @@ const App = () => (
       list={ArticleList}
       edit={ArticleEdit}
       create={ArticleCreate}
+    />
+    <Resource
+      name="categories"
+      list={CategoryList}
+      edit={CategoryEdit}
+      create={CategoryCreate}
     />
   </Admin>
 );
