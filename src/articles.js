@@ -62,9 +62,15 @@ const ArticleForm = (props) => {
     <SimpleForm className={classes.richText} {...props}>
       <TextInput disabled source="id" />
       <TextInput source="title" validate={validateRequired} fullWidth />
-      <ImageInput source="pictures" label="Related pictures" accept="image/*">
-        <ImageField source="src" title="title" />
+      <ImageInput
+        source="pictures"
+        label="Related pictures"
+        accept="image/*"
+        multiple={true}
+      >
+        <ImageField src="src" title="title" />
       </ImageInput>
+      <ImageField source="pictures" src="src" title="title" />
       <TextInput multiline source="text" fullWidth />
       <RichTextInput source="text" validate={validateRequired} disable />
       <ReferenceArrayInput
