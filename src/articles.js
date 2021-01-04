@@ -59,9 +59,10 @@ const ArticleTitle = ({ record }) => {
 const ArticleForm = (props) => {
   const classes = useStyles();
   return (
-    <SimpleForm className={classes.richText} {...props}>
+    <SimpleForm className={classes.richText} {...props} redirect="edit">
       <TextInput disabled source="id" />
       <TextInput source="title" validate={validateRequired} fullWidth />
+      <ImageField source="pictures" src="src" title="title" />
       <ImageInput
         source="pictures"
         label="Related pictures"
@@ -70,7 +71,6 @@ const ArticleForm = (props) => {
       >
         <ImageField src="src" title="title" />
       </ImageInput>
-      <ImageField source="pictures" src="src" title="title" />
       <TextInput multiline source="text" fullWidth />
       <RichTextInput source="text" validate={validateRequired} disable />
       <ReferenceArrayInput
