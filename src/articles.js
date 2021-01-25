@@ -72,7 +72,7 @@ const ArticleForm = (props) => {
         <ImageField src="src" title="title" />
       </ImageInput>
       <TextInput multiline source="text" fullWidth />
-      <RichTextInput source="text" validate={validateRequired} disable />
+      {/* <RichTextInput source="text" validate={validateRequired} disable /> */}
       <ReferenceArrayInput
         label="関連アーティスト"
         source="artist_ids"
