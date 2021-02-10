@@ -18,7 +18,6 @@ import {
   SelectInput,
   required,
 } from "react-admin";
-import RichTextInput from "ra-input-rich-text";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
