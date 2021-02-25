@@ -17,6 +17,7 @@ import {
   AutocompleteArrayInput,
   SelectInput,
   required,
+  DateInput,
 } from "react-admin";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -62,35 +63,18 @@ const ArticleForm = (props) => {
       <TextInput disabled source="id" />
       <TextInput source="title" validate={validateRequired} fullWidth />
       <ImageField source="pictures" src="src" title="title" />
-      <ImageInput
-        source="pictures"
-        label="Related pictures"
-        accept="image/*"
-        multiple={true}
-      >
+      <ImageInput source="pictures" label="Related pictures" accept="image/*" multiple={true}>
         <ImageField src="src" title="title" />
       </ImageInput>
       <TextInput multiline source="text" fullWidth />
       {/* <RichTextInput source="text" validate={validateRequired} disable /> */}
-      <ReferenceArrayInput
-        label="関連アーティスト"
-        source="artist_ids"
-        reference="artists"
-        sort={{ field: "name", order: "ASC" }}
-        fullWidth
-      >
+      <ReferenceArrayInput label="関連アーティスト" source="artist_ids" reference="artists" sort={{ field: "name", order: "ASC" }} fullWidth>
         <AutocompleteArrayInput />
       </ReferenceArrayInput>
-      <ReferenceInput
-        label="カテゴリ"
-        source="category"
-        reference="categories"
-        sort={{ field: "name", order: "ASC" }}
-        validate={validateRequired}
-        fullWidth
-      >
+      <ReferenceInput label="カテゴリ" source="category" reference="categories" sort={{ field: "name", order: "ASC" }} validate={validateRequired} fullWidth>
         <SelectInput optionText="name" />
       </ReferenceInput>
+      <DateInput source="published_at" label="publish date" />
     </SimpleForm>
   );
 };
